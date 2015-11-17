@@ -15,12 +15,9 @@ RUN wget -O /tmp/picard-tools-1.129.zip https://github.com/broadinstitute/picard
     && chown -R root:root /usr/local/picardtools \
     && echo 'export PATH=$PATH:/usr/local/picardtools/picard-tools-1.129' >> /root/.bashrc
 
-
 RUN rm -rf /tmp/*
-
 # BWA, samtools Installation  
 RUN apt-get install bwa samtools
-
 # GATK Installation 
 
 ADD GenomeAnalysisTK-3.4-46.tar.bz2 /usr/local/
@@ -41,6 +38,5 @@ RUN echo "alias picard='java -jar /usr/local/picardtools/picard-tools-1.129/pica
 
 #open ports private only
 EXPOSE 22
-
 # Use baseimage-docker's bash.
 CMD ["/bin/bash"]
